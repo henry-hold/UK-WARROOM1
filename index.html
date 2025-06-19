@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>UK War Room - v4</title>
+  <title>UK War Room - v5</title>
   <link rel="stylesheet" href="style.css" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
@@ -21,35 +20,49 @@
 
   <div id="main-app" class="hidden">
     <div id="clock-ticker-bar"></div>
+
     <nav>
       <ul>
         <li onclick="showPage('dashboard')">Dashboard</li>
-        <li onclick="showPage('map')">Map</li>
         <li onclick="showPage('intel')">Intel</li>
         <li onclick="showPage('news')">News</li>
         <li onclick="showPage('watchlist')">Watchlist</li>
+        <li onclick="showPage('simulator')">Simulator</li>
       </ul>
     </nav>
 
     <section id="dashboard" class="page">
       <h1>Global War Risk Dashboard</h1>
+
       <label class="switch">
         <input type="checkbox" id="siren-toggle" onchange="toggleSiren()" />
         <span class="slider"></span> Siren
       </label>
-      <audio id="siren-audio" src="air-raid-siren-sound-effect-241383.mp3" preload="auto"></audio>
-      <div id="siren-light" class="hidden"></div>
-      <canvas id="riskChart"></canvas>
-    </section>
 
-    <section id="map" class="page hidden">
-      <div id="map-container"></div>
+      <audio id="siren-audio" src="siren.mp3" preload="auto"></audio>
+      <div id="siren-light" class="hidden"></div>
+
+      <button class="collapsible">📈 Risk Level Chart</button>
+      <div class="content"><canvas id="riskChart"></canvas></div>
+
+      <button class="collapsible">🗺️ Global Map</button>
+      <div class="content"><div id="map-container"></div></div>
+
+      <button class="collapsible">📰 News Ticker</button>
+      <div class="content"><div id="news-ticker"><marquee id="ticker-text"></marquee></div></div>
+
+      <button class="collapsible">📋 Watchlist</button>
+      <div class="content">
+        <ul id="watchlist-feed">
+          <li><strong>[22:45]</strong> Missile exchange reported</li>
+        </ul>
+      </div>
     </section>
 
     <section id="intel" class="page hidden">
       <h2>Intelligence Briefing</h2>
       <button onclick="generateBriefing()">Generate Briefing PDF</button>
-      <p>Top global war/political updates, military rankings, and global event summaries will be displayed here.</p>
+      <p>Top war/political updates, military rankings, and global summaries will go here.</p>
     </section>
 
     <section id="news" class="page hidden">
@@ -59,11 +72,18 @@
     <section id="watchlist" class="page hidden">
       <h2>Live Watchlist</h2>
       <ul id="watchlist-feed">
-        <li><strong>[22:45]</strong> Missile exchange reported between Israel and Iran</li>
-        <li><strong>[22:50]</strong> NATO forces placed on alert status</li>
+        <li><strong>[22:45]</strong> Alert in Eastern Europe</li>
       </ul>
     </section>
+
+    <section id="simulator" class="page hidden">
+      <h2>AI-Powered War Simulator</h2>
+      <textarea id="warScenario" placeholder="Describe a global event or military flashpoint..."></textarea>
+      <button onclick="simulateWar()">Simulate</button>
+      <div id="simulationResult"></div>
+    </section>
   </div>
+
   <script src="script.js"></script>
 </body>
 </html>
