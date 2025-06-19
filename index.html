@@ -1,66 +1,69 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UK War Room v3</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>UK War Room - v4</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 </head>
 <body>
-    <div id="login-screen">
-        <h2>Login</h2>
-        <input type="text" id="username" placeholder="Username">
-        <input type="password" id="password" placeholder="Password">
-        <button onclick="validateLogin()">Enter</button>
-        <p id="login-error"></p>
-    </div>
+  <div id="login-screen">
+    <h2>Login</h2>
+    <input type="text" id="username" placeholder="Username" />
+    <input type="password" id="password" placeholder="Password" />
+    <button onclick="validateLogin()">Enter</button>
+    <p id="login-error"></p>
+  </div>
 
-    <div id="main-app" class="hidden">
-        <nav>
-            <ul>
-                <li onclick="showPage('dashboard')">Dashboard</li>
-                <li onclick="showPage('map')">Map</li>
-                <li onclick="showPage('intel')">Intel</li>
-                <li onclick="showPage('news')">News</li>
-                <li onclick="showPage('watchlist')">Watchlist</li>
-            </ul>
-        </nav>
+  <div id="main-app" class="hidden">
+    <div id="clock-ticker-bar"></div>
+    <nav>
+      <ul>
+        <li onclick="showPage('dashboard')">Dashboard</li>
+        <li onclick="showPage('map')">Map</li>
+        <li onclick="showPage('intel')">Intel</li>
+        <li onclick="showPage('news')">News</li>
+        <li onclick="showPage('watchlist')">Watchlist</li>
+      </ul>
+    </nav>
 
-        <section id="dashboard" class="page">
-            <h1>Global War Risk Dashboard</h1>
-            <label class="switch">
-                <input type="checkbox" id="siren-toggle" onchange="toggleSiren()">
-                <span class="slider"></span> Siren
-            </label>
-            <audio id="siren-audio" src="siren.mp3" preload="auto"></audio>
-            <div id="siren-light" class="hidden"></div>
-            <canvas id="riskChart"></canvas>
-        </section>
+    <section id="dashboard" class="page">
+      <h1>Global War Risk Dashboard</h1>
+      <label class="switch">
+        <input type="checkbox" id="siren-toggle" onchange="toggleSiren()" />
+        <span class="slider"></span> Siren
+      </label>
+      <audio id="siren-audio" src="siren.mp3" preload="auto"></audio>
+      <div id="siren-light" class="hidden"></div>
+      <canvas id="riskChart"></canvas>
+    </section>
 
-        <section id="map" class="page hidden">
-            <div id="map-container"></div>
-        </section>
+    <section id="map" class="page hidden">
+      <div id="map-container"></div>
+    </section>
 
-        <section id="intel" class="page hidden">
-            <h2>Intel Briefings</h2>
-            <p>Coming soon...</p>
-        </section>
+    <section id="intel" class="page hidden">
+      <h2>Intelligence Briefing</h2>
+      <button onclick="generateBriefing()">Generate Briefing PDF</button>
+      <p>Top global war/political updates, military rankings, and global event summaries will be displayed here.</p>
+    </section>
 
-        <section id="news" class="page hidden">
-            <div id="news-ticker"><marquee id="ticker-text"></marquee></div>
-        </section>
+    <section id="news" class="page hidden">
+      <div id="news-ticker"><marquee id="ticker-text"></marquee></div>
+    </section>
 
-        <section id="watchlist" class="page hidden">
-            <h2>Live Watchlist</h2>
-            <ul id="watchlist-feed">
-                <li><strong>[22:45]</strong> Missile exchange reported between Israel and Iran</li>
-                <li><strong>[22:50]</strong> NATO forces placed on alert status</li>
-            </ul>
-        </section>
-    </div>
-    <script src="script.js"></script>
+    <section id="watchlist" class="page hidden">
+      <h2>Live Watchlist</h2>
+      <ul id="watchlist-feed">
+        <li><strong>[22:45]</strong> Missile exchange reported between Israel and Iran</li>
+        <li><strong>[22:50]</strong> NATO forces placed on alert status</li>
+      </ul>
+    </section>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>
