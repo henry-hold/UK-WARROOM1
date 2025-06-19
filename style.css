@@ -1,0 +1,17 @@
+
+body { margin: 0; font-family: Arial, sans-serif; background: #0c0c0c; color: white; }
+.hidden { display: none; }
+nav ul { list-style: none; display: flex; justify-content: space-around; background: #1a1a1a; padding: 10px; }
+nav ul li { cursor: pointer; padding: 5px 10px; color: #ddd; }
+nav ul li:hover { background: #333; }
+.page { padding: 20px; }
+#map-container { height: 600px; width: 100%; }
+.switch { position: relative; display: inline-block; width: 60px; height: 34px; }
+.switch input { display: none; }
+.slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; }
+.slider:before { position: absolute; content: ""; height: 26px; width: 26px; left: 4px; bottom: 4px; background-color: white; transition: .4s; }
+input:checked + .slider { background-color: red; }
+input:checked + .slider:before { transform: translateX(26px); }
+#siren-light { height: 10px; background: red; animation: blink 1s infinite; }
+@keyframes blink { 0% {opacity: 1;} 50% {opacity: 0;} 100% {opacity: 1;} }
+#news-ticker { background: #111; padding: 10px; font-weight: bold; border-top: 1px solid #444; }
